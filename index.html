@@ -33,9 +33,10 @@
         nav button:hover {
             color: rgba(128, 128, 128, 1);
             background-color: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1); /* Увеличение кнопки */
+            transform: scale(1.1);
         }
         .image-container {
+            position: relative;
             width: 100%;
             overflow: hidden;
         }
@@ -44,16 +45,20 @@
             height: auto;
         }
         .blue-button {
-            margin-top: 20px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
             padding: 10px 20px;
             border: none;
-            background-color: blue;
+            background-color: transparent;
             color: white;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0.8;
         }
         .blue-button:hover {
-            background-color: darkblue;
+            transform: scale(1.1);
+            opacity: 1;
         }
         .text-content {
             display: none;
@@ -93,15 +98,14 @@
 
 <div class="image-container" id="homeContent">
     <img src="image/photo_2025-02-25_00-25-16.jpg" alt="Изображение">
-    <div class="overlay-text">Применение виртуальной реальности в медицине</div>
-    <button class="blue-button" onclick="showContent('vr')">Узнать больше</button>
+    <button class="blue-button" onclick="showContent('vr')">Подробнее</button>
 </div>
 
 <div class="text-content">
     <h3>Информация</h3>
     <p>1. Подготовка оборудования...</p>
-    <!-- Добавьте дополнительный текст по запросу -->
 </div>
 </body>
 </html>
+
 
