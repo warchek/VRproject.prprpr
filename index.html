@@ -45,14 +45,15 @@
             position: relative;
             width: 100%;
             overflow: hidden;
+            background-color: black; /* Черный фон для краев */
         }
         .image-container img {
             width: 100%;
             height: auto;
             transition: filter 0.5s;
         }
-        .image-container:hover img {
-            filter: blur(5px);
+        nav button:hover ~ .image-container img {
+            filter: blur(5px); /* Размытие при наведении на кнопку */
         }
         .blue-button {
             position: absolute;
