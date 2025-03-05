@@ -20,21 +20,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, white, blue);
+            background: black;
         }
         nav button {
             margin: 0 5px;
-            padding: 12px 24px;
-            background: none;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: white;
             color: black;
+            font-weight: bold;
             cursor: pointer;
-            border: 1px solid white;
-            transition: color 0.3s, background-color 0.3s, transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         nav button:hover {
-            color: rgba(128, 128, 128, 1);
-            background-color: rgba(255, 255, 255, 0.3);
             transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
         .image-container {
             position: relative;
