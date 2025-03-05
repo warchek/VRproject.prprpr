@@ -37,6 +37,26 @@
         .content {
             display: block;
         }
+        .image-container {
+            width: 100%;
+            overflow: hidden; /* Скрывает переполнение */
+        }
+        .image-container img {
+            width: 100%; /* Изображение займет всю ширину */
+            height: auto; /* Сохраняет пропорции */
+        }
+        .blue-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .blue-button:hover {
+            background-color: darkblue;
+        }
         .text-content {
             display: none;
             padding: 40px;
@@ -77,7 +97,7 @@
         <img src="image/photo_2025-02-25_00-25-16.jpg" alt="Изображение">
         <div class="overlay-text">Применение виртуальной реальности в медицине</div>
     </div>
-    <button onclick="showContent()">Узнать больше</button>
+    <button class="blue-button" onclick="showContent()">Узнать больше</button>
 </div>
 
 <div class="text-content">
@@ -87,6 +107,7 @@
 </div>
 </body>
 </html>
+
 
 
 
