@@ -3,39 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VR Guide - Информация</title>
+    <title>VR guide</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             text-align: center;
-            background-color: #f0f0f0;
+            background-image: url('image/background.jpg');
+            background-size: cover;
+            height: 100vh;
+        }
+        header {
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: black;
+        }
+        .title {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        nav button {
+            margin: 0 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        nav button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .image-container {
+            position: relative;
+            width: 100%;
             overflow: hidden;
+            background-color: black; /* Черный фон для краев */
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            transition: filter 0.5s;
+        }
+        nav button:hover ~ .image-container img {
+            filter: blur(5px); /* Размытие при наведении на кнопку */
+        }
+        .blue-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .blue-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
         .text-content {
-            margin: auto;
-            max-width: 800px;
-            text-align: left;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 0.5s;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        h3 {
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        p {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .wrapper {
-            max-height: 80vh;
-            overflow-y: auto;
-            padding-right: 15px;
+            display: none;
+            padding: 40px;
+            font-size: 16px;
         }
     </style>
     <script>
@@ -58,46 +98,25 @@
     </script>
 </head>
 <body>
-    <header>
-        <div class="title">VR Guide</div>
-        <nav>
-            <button onclick="showContent('home')">Home</button>
-            <button onclick="showContent('vr')">VR</button>
-            <button onclick="alert('О себе')">About Me</button>
-            <button onclick="alert('Контакт')">Contact</button>
-        </nav>
-    </header>
+<header>
+    <div class="title">VR Guide</div>
+    <nav>
+        <button onclick="showContent('home')">Home</button>
+        <button onclick="showContent('vr')">VR</button>
+        <button onclick="alert('О себе')">About Me</button>
+        <button onclick="alert('Контакт')">Contact</button>
+    </nav>
+</header>
 
-    <div class="text-content">
-        <div class="wrapper">
-            <h3>Подготовка оборудования</h3>
-            <p>Выбор устройства: Определите, какое VR-оборудование вам нужно (например, Oculus Quest, HTC Vive, PlayStation VR и т.д.). Убедитесь, что устройство поддерживает необходимые функции.</p>
+<div class="image-container" id="homeContent">
+    <img src="image/photo_2025-02-25_00-25-16.jpg" alt="Изображение">
+    <button class="blue-button" onclick="showContent('vr')">Подробнее</button>
+</div>
 
-            <h3>Настройка пространства</h3>
-            <p>Выбор места: Найдите безопасное и достаточно просторное место для использования VR. Убедитесь, что в комнате нет препятствий.</p>
-            <p>Калибровка устройства: Следуйте инструкциям по калибровке VR-гарнитуры, чтобы обеспечить правильное отображение и отслеживание движений.</p>
-
-            <h3>Обучение и подготовка</h3>
-            <p>Изучение интерфейса: Ознакомьтесь с интерфейсом VR-программы. Посмотрите обучающие видео или прочитайте инструкции.</p>
-            <p>Тренировка: Пройдите несколько тренировочных сессий, чтобы привыкнуть к управлению и взаимодействию в VR.</p>
-
-            <h3>Применение VR в обучении</h3>
-            <p>Симуляция медицинских процедур: Используйте VR для обучения выполнению операций или других медицинских процедур.</p>
-            <p>Оценка навыков: После тренировки проведите оценку своих навыков, используя встроенные тесты или обратную связь от инструкторов.</p>
-
-            <h3>Использование VR в терапии</h3>
-            <p>Психотерапия: Если вы используете VR для лечения фобий или ПТСР, следуйте протоколам, рекомендованным специалистами.</p>
-            <p>Реабилитация: Применяйте VR как инструмент для реабилитации, следуя программам, разработанным для восстановления движений и функций после травм.</p>
-
-            <h3>Обратная связь и анализ</h3>
-            <p>Сбор данных: Записывайте данные о прогрессе и результатах.</p>
-            <p>Обратная связь: Получайте отзывы от участников о их опыте использования VR.</p>
-
-            <h3>Обсуждение результатов</h3>
-            <p>Анализ результатов: Обсудите результаты с коллегами или пациентами.</p>
-            <p>Корректировка программ: На основе собранной информации вносите изменения в подходы и методики использования.</p>
-        </div>
-    </div>
+<div class="text-content">
+    <h3>Информация</h3>
+    <p>1. Подготовка оборудования...</p>
+</div>
 </body>
 </html>
 
