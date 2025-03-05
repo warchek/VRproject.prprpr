@@ -10,117 +10,60 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            background-image: url('image/background.jpg'); /* Замените 'background.jpg' на нужное изображение */
+            background-image: url('image/background.jpg');
             background-size: cover;
-            background-position: center;
-            height: 100vh; /* Задаем высоту для body */
+            height: 100vh;
         }
         header {
             padding: 20px;
-            color: black; /* Цвет текста для лучшей видимости */
+            color: black;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative; /* Устанавливаем позицию относительно */
-            z-index: 2; /* Поднимаем уровень выше фона */
-        }
-        .title {
-            font-size: 32px; /* Увеличен размер шрифта для заголовка */
-        }
-        nav {
-            position: relative; /* Устанавливаем позицию для навигации */
-            z-index: 2; /* Поднимаем уровень кнопок выше фона */
         }
         nav button {
             margin: 0 5px;
-            padding: 12px 24px; /* Увеличены отступы кнопок */
-            border: 1px solid white; /* Белая рамка для кнопок */
-            background: none; /* Убираем заливку кнопок */
-            color: black; /* Цвет текста кнопок */
+            padding: 12px 24px;
+            background: none;
+            color: black;
             cursor: pointer;
-            transition: color 0.3s; /* Плавный переход только для цвета текста */
-            font-size: 16px; /* Увеличен размер шрифта для кнопок */
+            transition: color 0.3s, background-color 0.3s;
+            border: 1px solid white;
         }
         nav button:hover {
-            color: rgba(128, 128, 128, 1); /* Серый цвет текста при наведении */
+            color: rgba(128, 128, 128, 1);
+            background-color: rgba(255, 255, 255, 0.3);
         }
         .content {
-            display: block; /* Контент показываем по умолчанию */
-            margin: 0;
-            padding: 20px 0; /* Добавляем отступы для контента */
-            color: white; /* Цвет текста для читаемости */
-            z-index: 2; /* Поднимаем уровень текста выше фона */
-            position: relative; /* Устанавливаем позицию для текста */
-        }
-        .image-container {
-            position: relative; /* Обернули изображение в контейнер для позиционирования текста */
-            width: 100vw;
-        }
-        img {
-            width: 100%; /* Изображение растягивается на всю ширину родителя */
-            height: auto;
             display: block;
         }
-        .overlay-text {
-            position: absolute; /* Позиция текста поверх изображения */
-            top: 30%; /* Центрируем по вертикали */
-            left: 40%; /* Сдвигаем текст влево, но не до конца */
-            transform: translate(-50%, -50%); /* Сдвигаем текст к центру */
-            color: white; /* Цвет текста */
-            font-size: 32px; /* Размер шрифта для заголовка на изображении */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Тень для лучшей читаемости */
-            z-index: 3; /* Уровень текста выше фона */
-        }
-        .description {
-            margin-top: 10px; /* Отступ сверху для описания */
-            font-size: 18px; /* Размер шрифта для описания */
-            color: black; /* Цвет текста описания */
-        }
-        .blue-button {
-            margin-top: 20px; /* Отступ сверху для синей кнопки */
-            padding: 12px 24px; /* Отступы для кнопки */
-            background-color: blue; /* Синий цвет кнопки */
-            color: white; /* Цвет текста кнопки */
-            border: none; /* Убираем рамку */
-            cursor: pointer; /* Указатель при наведении */
-            font-size: 16px; /* Размер шрифта для кнопки */
-            transition: background-color 0.3s; /* Плавный переход для фона кнопки */
-        }
-        .blue-button:hover {
-            background-color: darkblue; /* Темно-синий цвет при наведении */
-        }
         .text-content {
-            margin-top: 20px; /* Отступ сверху для текста */
-            text-align: left; /* Выравнивание текста по левому краю */
-
-            color: black; /* Цвет текста */
-            font-size: 16px; /* Размер шрифта для текста */
-            display: none; /* Скрытым, пока не нажата кнопка */
+            display: none;
+            padding: 40px;
+            font-size: 16px;
         }
     </style>
     <script>
-        let isHome = true; // Переменная для отслеживания текущего состояния
-    
+        let isHome = true;
+
         function showContent() {
             const content = document.querySelector('.content');
-            const textContent = document.getElementById('detailedText');
-            
+            const textContent = document.querySelector('.text-content');
+
             if (isHome) {
-                content.style.display = 'none'; // Скрываем изображение
-                textContent.style.display = 'block'; // Показываем текст
+                content.style.display = 'none';
+                textContent.style.display = 'block';
             } else {
-                content.style.display = 'block'; // Показываем изображение
-                textContent.style.display = 'none'; // Скрываем текст
+                content.style.display = 'block';
+                textContent.style.display = 'none';
             }
-            
-            isHome = !isHome; // Меняем состояние
+            isHome = !isHome;
         }
-    </script>    
+    </script>
 </head>
 <body>
-
 <header>
-    <div class="title">VR guide</div>
+    <div class="title">VR Guide</div>
     <nav>
         <button onclick="showContent()">Home</button>
         <button onclick="alert('Категория')">VR</button>
@@ -132,35 +75,19 @@
 <div class="content" id="homeContent">
     <div class="image-container">
         <img src="image/photo_2025-02-25_00-25-16.jpg" alt="Изображение">
-        <div class="overlay-text">Application of virtual reality in medicine</div>
+        <div class="overlay-text">Применение виртуальной реальности в медицине</div>
     </div>
-    <button class="blue-button" onclick="showContent()">Узнать больше</button>
+    <button onclick="showContent()">Узнать больше</button>
 </div>
 
-<div class="text-content" id="detailedText" style="padding: 40px;">
+<div class="text-content">
     <h3>Информация</h3>
-    <p>1. Подготовка оборудования
-        Выбор устройства: Определите, какое VR-оборудование вам нужно (например, Oculus Quest, HTC Vive, PlayStation VR и т.д.). Убедитесь, что устройство поддерживает необходимые функции.
-        Установка программного обеспечения: Установите необходимое программное обеспечение для работы с VR-приложениями. Это может включать платформы для симуляции или специальные медицинские приложения.
-        2. Настройка пространства
-        Выбор места: Найдите безопасное и достаточно просторное место для использования VR. Убедитесь, что в комнате нет препятствий.
-        Калибровка устройства: Следуйте инструкциям по калибровке VR-гарнитуры, чтобы обеспечить правильное отображение и отслеживание движений.
-        3. Обучение и подготовка
-        Изучение интерфейса: Ознакомьтесь с интерфейсом VR-программы. Посмотрите обучающие видео или прочитайте инструкции.
-        Тренировка: Пройдите несколько тренировочных сессий, чтобы привыкнуть к управлению и взаимодействию в VR. Это важно для успешного использования в медицинских целях.
-        4. Применение VR в обучении
-        Симуляция медицинских процедур: Используйте VR для обучения выполнению операций или других медицинских процедур. Это может включать виртуальные анатомические модели и сценарии, которые имитируют реальные клинические ситуации.
-        Оценка навыков: После тренировки проведите оценку своих навыков, используя встроенные тесты или обратную связь от инструкторов.
-        5. Использование VR в терапии
-        Психотерапия: Если вы используете VR для лечения фобий или ПТСР, следуйте протоколам, рекомендованным специалистами. Это может включать создание безопасной виртуальной среды для проработки страхов.
-        Реабилитация: Применяйте VR как инструмент для реабилитации, следуя программам, разработанным для восстановления движений и функций после травм.
-        6. Обратная связь и анализ
-        Сбор данных: Записывайте данные о прогрессе и результатах, чтобы оценить эффективность VR-терапии или обучения.
-        Обратная связь: Получайте отзывы от участников о их опыте использования VR. Это поможет улучшить процесс и адаптировать его под нужды пользователей.
-        7. Обсуждение результатов
-        Анализ результатов: Обсудите результаты с коллегами или пациентами, чтобы понять, как VR повлиял на обучение или терапию.
-        Корректировка программ: На основе собранной информации вносите изменения в подходы и методики использования VR.</p>
+    <p>1. Подготовка оборудования...</p>
+    <!-- Текст и информация по вашему запросу -->
 </div>
+</body>
+</html>
+
 
 
 </body>
