@@ -27,23 +27,20 @@
             background: none;
             color: black;
             cursor: pointer;
-            transition: color 0.3s, background-color 0.3s;
             border: 1px solid white;
+            transition: color 0.3s, background-color 0.3s;
         }
         nav button:hover {
             color: rgba(128, 128, 128, 1);
             background-color: rgba(255, 255, 255, 0.3);
         }
-        .content {
-            display: block;
-        }
         .image-container {
             width: 100%;
-            overflow: hidden; /* Скрывает переполнение */
+            overflow: hidden;
         }
         .image-container img {
-            width: 100%; /* Изображение займет всю ширину */
-            height: auto; /* Сохраняет пропорции */
+            width: 100%;
+            height: auto;
         }
         .blue-button {
             margin-top: 20px;
@@ -64,20 +61,21 @@
         }
     </style>
     <script>
-        let isHome = true;
+        let currentView = 'home';
 
-        function showContent() {
-            const content = document.querySelector('.content');
+        function showContent(view) {
+            const homeContent = document.querySelector('.image-container');
             const textContent = document.querySelector('.text-content');
 
-            if (isHome) {
-                content.style.display = 'none';
-                textContent.style.display = 'block';
-            } else {
-                content.style.display = 'block';
+            if (view === 'home') {
+                homeContent.style.display = 'block';
                 textContent.style.display = 'none';
+                currentView = 'home';
+            } else if (view === 'vr') {
+                homeContent.style.display = 'none';
+                textContent.style.display = 'block';
+                currentView = 'vr';
             }
-            isHome = !isHome;
         }
     </script>
 </head>
@@ -85,31 +83,24 @@
 <header>
     <div class="title">VR Guide</div>
     <nav>
-        <button onclick="showContent()">Home</button>
-        <button onclick="alert('Категория')">VR</button>
+        <button onclick="showContent('home')">Home</button>
+        <button onclick="showContent('vr')">VR</button>
         <button onclick="alert('О себе')">About Me</button>
         <button onclick="alert('Контакт')">Contact</button>
     </nav>
 </header>
 
-<div class="content" id="homeContent">
-    <div class="image-container">
-        <img src="image/photo_2025-02-25_00-25-16.jpg" alt="Изображение">
-        <div class="overlay-text">Применение виртуальной реальности в медицине</div>
-    </div>
-    <button class="blue-button" onclick="showContent()">Узнать больше</button>
+<div class="image-container" id="homeContent">
+    <img src="image/photo_2025-02-25_00-25-16.jpg" alt="Изображение">
+    <div class="overlay-text">Применение виртуальной реальности в медицине</div>
+    <button class="blue-button" onclick="showContent('vr')">Узнать больше</button>
 </div>
 
 <div class="text-content">
     <h3>Информация</h3>
     <p>1. Подготовка оборудования...</p>
-    <!-- Текст и информация по вашему запросу -->
+    <!-- Добавьте дополнительный текст по запросу -->
 </div>
 </body>
 </html>
 
-
-
-
-</body>
-</html>
