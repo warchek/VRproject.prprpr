@@ -3,75 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт с кнопкой</title>
+    <title>VR guide</title>
     <style>
-        #button {
-            display: block;
-            margin: 20px auto;
-            width: 300px; /* Увеличен размер картинки до 300px */
-            border-radius: 15px;
-            transition: transform 0.3s;
-        }
-        #button:hover {
-            transform: scale(1.1);
-        }
-        #stopButton {
-            display: block;
-            margin: 10px auto;
-            padding: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        #stopButton:hover {
-            transform: scale(1.1);
-            background-color: darkred;
-        }
-        h1 {
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             text-align: center;
-            transition: transform 0.3s;
+            background-image: url('image/background.jpg');
+            background-size: cover;
+            height: 100vh;
         }
-        h1:hover {
-            transform: scale(1.1);
+        header {
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: black;
+        }
+        .title {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        nav button {
+            margin: 0 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: white;
+            color: black;
+            font-weight: bold;
             cursor: pointer;
-            color: #007bff;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        /* Медиазапросы для мобильных устройств */
-        @media (max-width: 600px) {
-            #button {
-                width: 80%; /* Адаптация ширины изображения для телефонов */
-            }
-            h1 {
-                font-size: 24px; /* Уменьшение размера заголовка */
-            }
-            #stopButton {
-                width: 80%; /* Адаптация ширины кнопки для телефонов */
-            }
+        nav button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .image-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: black; /* Черный фон для краев */
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            transition: filter 0.5s;
+        }
+        nav button:hover ~ .image-container img {
+            filter: blur(5px); /* Размытие при наведении на кнопку */
+        }
+        .blue-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .blue-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .text-content {
+            display: none;
+            padding: 40px;
+            font-size: 16px;
         }
     </style>
-</head>
-<body>
-    <a href="https://t.me/sleeeptag" target="_blank">
-        <h1>sleeeptag</h1>
-    </a>
-    <img src="https://i.imgur.com/6KfnIBs.jpeg" id="button" style="cursor:pointer;" alt="Кнопка" />
-    <audio id="sound" src="https://www.myinstants.com/media/sounds/wait-wait-wait-what-the-hell-legend-sound.mp3"></audio>
-    <button id="stopButton">ВЫКЛЮЧИТЬ</button>
-    
     <script>
-        document.getElementById('button').onclick = function() {
-            document.getElementById('sound').play();
-        }
-        
-        // Убираем остановку музыки при нажатии на кнопку
-        document.getElementById('stopButton').onclick = function() {
-            // В данной функции ничего не происходит
+        let currentView = 'home';
+
+        function showContent(view) {
+            const homeContent = document.querySelector('.image-container');
+            const textContent = document.querySelector('.text-content');
+
+            if (view === 'home') {
+                homeContent.style.display = 'block';
+                textContent.style.display = 'none';
+                currentView = 'home';
+            } else if (view === 'vr') {
+                homeContent.style.display = 'none';
+                textContent.style.display = 'block';
+                currentView = 'vr';
+            }
         }
     </script>
+</head>
+<body>
+<header>
+    <div class="title">VR Guide</div>
+    <nav>
+        <button onclick="showContent('home')">Home</button>
+        <button onclick="showContent('vr')">VR</button>
+        <button onclick="alert('О себе')">About Me</button>
+        <button onclick="alert('Контакт')">Contact</button>
+    </nav>
+</header>
+
+<div class="image-container" id="homeContent">
+    <img src="image/photo_2025-02-25_00-25-16.jpg" alt="Изображение">
+    <button class="blue-button" onclick="showContent('vr')">Подробнее</button>
+</div>
+
+<div class="text-content">
+    <h3>Информация</h3>
+    <p>1. Подготовка оборудования...</p>
+</div>
 </body>
 </html>
-
